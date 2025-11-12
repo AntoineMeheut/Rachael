@@ -1,0 +1,333 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "content": "# 🟣 Automatically process CVs in my inbox",
+        "height": 660,
+        "width": 1304,
+        "color": 6
+      },
+      "id": "0869677b-9081-408f-957f-cc50cc08efab",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -768,
+        -64
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Please review the CV of this candidate, whose name is: {{ $json.output.full_name }}. If they are a Python expert, please email them at: {{ $json.output.email }} to inform them that their application has been successful. Otherwise, if the developer is a beginner or junior, please email them to inform them that their application has not been successful.\n\nCV Contents:\n===\n{{ $json.output.summary }}\n===",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": ""
+        }
+      },
+      "id": "688ecdee-71b1-44fd-b450-ae587115e72c",
+      "name": "Profile Analyzer Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        192,
+        -16
+      ],
+      "typeVersion": 2.1,
+      "retryOnFail": true,
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "model": "granite4:latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        192,
+        160
+      ],
+      "id": "77fbd258-9b4b-4fd7-83dc-74cc89fb74ab",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "jhF9dXJHEBbbWxoU",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "binaryPropertyName": "attachment_00",
+        "options": {}
+      },
+      "id": "9c21c68b-5379-40d4-a7a7-a855eac3de8f",
+      "name": "Extract Profile",
+      "type": "n8n-nodes-base.extractFromFile",
+      "position": [
+        -496,
+        128
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "format": "resolved",
+        "dataPropertyAttachmentsPrefixName": "attachment_0",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailReadImap",
+      "typeVersion": 2.1,
+      "position": [
+        -688,
+        128
+      ],
+      "id": "da3cfb42-b491-42b5-89cb-daca0f427e89",
+      "name": "Email Trigger",
+      "credentials": {
+        "imap": {
+          "id": "Zoz02RY1WAtb8gWv",
+          "name": "IMAP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "=alice.hackme@watay.fr",
+        "toEmail": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('To_Email', ``, 'string') }}",
+        "subject": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Subject', ``, 'string') }}",
+        "html": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('HTML', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSendTool",
+      "typeVersion": 2.1,
+      "position": [
+        288,
+        256
+      ],
+      "id": "9ed4d719-4940-42e9-a9b0-ba96a2489a8f",
+      "name": "Send email",
+      "webhookId": "e0d21e9c-c55b-4ba7-ae3b-40415da47fe4",
+      "credentials": {
+        "smtp": {
+          "id": "yG40gujvrd8Db88y",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"full_name\": \"\",\n  \"email\":\"\",\n  \"summary\": \"\",\n  \"expertise level\": 0\n}"
+      },
+      "id": "33c3aa8a-a866-44bf-bc00-87f95fc31092",
+      "name": "json parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "position": [
+        -160,
+        320
+      ],
+      "typeVersion": 1.3
+    },
+    {
+      "parameters": {
+        "model": "granite4:latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        -304,
+        320
+      ],
+      "id": "f7f8ac43-77ee-47cc-afb2-6f62893c165d",
+      "name": "Ollama Chat Model1",
+      "credentials": {
+        "ollamaApi": {
+          "id": "jhF9dXJHEBbbWxoU",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Extract the candidate's name and email address from this resume, provide a summary of their resume, and rate their Python expertise on a scale of 1 to 10, where 1 is a beginner developer and 10 is an expert developer.\n\nResume Content:\n===\n{{ $json.text }}\n===",
+        "hasOutputParser": true,
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        -304,
+        128
+      ],
+      "id": "fe3dd53f-6f9e-4188-8f9d-1eb772d58d55",
+      "name": "Extract from PDF"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "a69c879b-ebf6-4237-b19a-4bb1e4686746",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              },
+              "leftValue": "={{ $json.output[\"expertise level\"] }}",
+              "rightValue": 8
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "1db6d552-ca08-44b2-9f6a-5de828e92fc0",
+      "name": "Candidate expertise",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        -16,
+        128
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "fromEmail": "alice.hackme@watay.fr",
+        "toEmail": "={{ $json.output.email }}",
+        "subject": "Offer OFER-001: Expert Python Developer ",
+        "html": "Thank you very much for your application, which we were unable to accept. Sincerely.",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        64,
+        416
+      ],
+      "id": "e64eacaf-a162-4459-988c-0574d462d8eb",
+      "name": "Send email1",
+      "webhookId": "6d62c552-ddd3-4729-930c-2f70294b9fe5",
+      "credentials": {
+        "smtp": {
+          "id": "yG40gujvrd8Db88y",
+          "name": "SMTP account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Profile Analyzer Agent": {
+      "main": [
+        []
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Profile Analyzer Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Profile": {
+      "main": [
+        [
+          {
+            "node": "Extract from PDF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Trigger": {
+      "main": [
+        [
+          {
+            "node": "Extract Profile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send email": {
+      "ai_tool": [
+        [
+          {
+            "node": "Profile Analyzer Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "json parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Extract from PDF",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Extract from PDF",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from PDF": {
+      "main": [
+        [
+          {
+            "node": "Candidate expertise",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Candidate expertise": {
+      "main": [
+        [
+          {
+            "node": "Profile Analyzer Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send email1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "402d18d0eb6bf5238946dac39787f83d58b25453abdbf26d9b7b74aa4cf04588"
+  }
+}

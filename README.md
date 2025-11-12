@@ -123,13 +123,32 @@ n8n workflows can be saved in json format; you can find the json file for this d
 
 You will need to adapt certain steps of the workflow you just imported into the n8n tool to make the demonstration work.
 
-TODO - Include screenshots to show all workflow settings
+The necessary adjustments concern:
+
+- the IMAP account to use for reading incoming emails in the email trigger block,
+- the AI model to use in the Ollama Chat Model block; here I used granite4, which is a very fast AI model with a lot of functionality considering its size,
+- finally, you will need to configure the send email block with an SMTM account.
+
+The n8n documentation is very well done; you will find the details of these settings directly within each n8n block by clicking on Docs.
 
 ## Closer look to Eve CV
-TODO - Show how the instructions were inserted into the CV
+There are many ways to inject commands for an AI into a PDF file. It depends on the AI, what it's been asked to do, and the security filters it has or that were added before the AI accessed the file.
+
+In this test, the command was injected into the first line of the PDF file, using an extremely thin font and, most importantly, white font color, since the CV page is white.
+
+The AI therefore reads this injection first, which instructs it to forget its previous instructions and perform a different processing of this CV.
+
+If you give your AI full access to your email, this type of attack can be used, for example, to instruct your AI to exfiltrate highly confidential information from your emails, such as secrets, personal information, your contact list, etc.
 
 ## Avoid this attack in n8n
-TODO - Share the JSON file with the CV filtering steps that allow you to protect yourself from this type of risk.
+One way to protect against this type of attack is to filter the received data, extracting only the relevant information. As a result, the command insertion into Eve's CV is not taken into account.
+<p align="center">
+  <a>
+    <img src="images/HR-agent-escape-input.png" alt="HR-agent-sample" width="450" height="250">
+  </a>
+</p>
+
+You can find an example json file here [escape input](/resources/n8n_json_demo/escape-input.json), import it into your n8n instance to test it.
 
 <!-- CONTRIBUTING -->
 # Contributing
