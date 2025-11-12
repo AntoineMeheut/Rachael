@@ -1,0 +1,176 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "content": "# 🟣 Automatically process CVs in my inbox",
+        "height": 660,
+        "width": 1144,
+        "color": 6
+      },
+      "id": "a739cf27-ddbc-4098-b26a-47e013fb56aa",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -608,
+        -64
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Please review this candidate's CV, retrieve their email address, and if they are a Python expert, send them an email informing them that their application has been successful.\n\nCV Content:\n\n===\n{{ $json[\"text\"] }}\n===",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": ""
+        }
+      },
+      "id": "897405b0-4ee4-4df6-9bee-84b632bceaa0",
+      "name": "Profile Analyzer Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        16,
+        128
+      ],
+      "typeVersion": 2.1,
+      "retryOnFail": true,
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "model": "granite4:latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        16,
+        320
+      ],
+      "id": "e3d9306c-532a-42b1-b86f-4c8623a9a71c",
+      "name": "Ollama Chat Model",
+      "credentials": {
+        "ollamaApi": {
+          "id": "jhF9dXJHEBbbWxoU",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "binaryPropertyName": "attachment_00",
+        "options": {}
+      },
+      "id": "b2fc7642-e86a-4b0a-aae7-817f719e065b",
+      "name": "Extract Profile",
+      "type": "n8n-nodes-base.extractFromFile",
+      "position": [
+        -240,
+        128
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "format": "resolved",
+        "dataPropertyAttachmentsPrefixName": "attachment_0",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailReadImap",
+      "typeVersion": 2.1,
+      "position": [
+        -448,
+        128
+      ],
+      "id": "76e8f65f-11cd-4ceb-a9df-d9bf59114318",
+      "name": "Email Trigger",
+      "credentials": {
+        "imap": {
+          "id": "Zoz02RY1WAtb8gWv",
+          "name": "IMAP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "=alice.hackme@watay.fr",
+        "toEmail": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('To_Email', ``, 'string') }}",
+        "subject": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Subject', ``, 'string') }}",
+        "html": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('HTML', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSendTool",
+      "typeVersion": 2.1,
+      "position": [
+        112,
+        432
+      ],
+      "id": "c1438f56-9de9-4f86-9785-7f87b2322c51",
+      "name": "Send email",
+      "webhookId": "b9aa6d31-e1a4-4b72-8c41-b80ba698ee3c",
+      "credentials": {
+        "smtp": {
+          "id": "yG40gujvrd8Db88y",
+          "name": "SMTP account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Profile Analyzer Agent": {
+      "main": [
+        []
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Profile Analyzer Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Profile": {
+      "main": [
+        [
+          {
+            "node": "Profile Analyzer Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Trigger": {
+      "main": [
+        [
+          {
+            "node": "Extract Profile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send email": {
+      "ai_tool": [
+        [
+          {
+            "node": "Profile Analyzer Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "402d18d0eb6bf5238946dac39787f83d58b25453abdbf26d9b7b74aa4cf04588"
+  }
+}
