@@ -59,9 +59,11 @@
 Alice created a workflow that uses AI to read all her new emails, assess the CV against a job offer, choose the candidate and automatically send them an email, if the AI ​​agent considers that their CV matches the position to be filled.
 
 Video of the processing of Bob's CV, whose profile is a perfect match for the job advertisement.
+
 https://github.com/user-attachments/assets/437aa070-5026-481a-9e2b-bb6df23a0b86
 
 Video of the processing of Eve's CV which has integrated instructions into her CV, to manipulate Alice's AI agent.
+
 https://github.com/user-attachments/assets/629a93b0-e607-429d-a5ab-958ce7ac497c
 
 Eve should not receive a success notification. If she does, it's because she included the following instructions in her resume for the AI ​​agent who processed it.
