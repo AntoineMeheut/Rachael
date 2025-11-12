@@ -39,7 +39,8 @@
     * [Install ollama](#install-ollama)
     * [Create the AI agent](#create-the-AI-agent)
     * [Demonstration setup](#demonstration-setup)
-    * [Demonstration execution](#demonstration-execution)
+    * [Closer look to Eve CV](#closer-look-to-eve-cv)
+    * [Avoid this attack in n8n](#avoid-this-attack-in-n8n)
 * [Contributing](#contributing)
 * [License](#license)
 * [Credit](#credit)
@@ -124,10 +125,10 @@ You will need to adapt certain steps of the workflow you just imported into the 
 
 TODO - Include screenshots to show all workflow settings
 
-## A closer look at Eve's CV
+## Closer look to Eve CV
 TODO - Show how the instructions were inserted into the CV
 
-## Avoid this attack with an n8n workflow
+## Avoid this attack in n8n
 TODO - Share the JSON file with the CV filtering steps that allow you to protect yourself from this type of risk.
 
 <!-- CONTRIBUTING -->
