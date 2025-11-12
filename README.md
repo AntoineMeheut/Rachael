@@ -122,13 +122,13 @@ n8n workflows can be saved in json format; you can find the json file for this d
 
 You will need to adapt certain steps of the workflow you just imported into the n8n tool to make the demonstration work.
 
-### 
-## Demonstration execution
-
-
+TODO - Include screenshots to show all workflow settings
 
 ## A closer look at Eve's CV
+TODO - Show how the instructions were inserted into the CV
 
+## Avoid this attack with an n8n workflow
+TODO - Share the JSON file with the CV filtering steps that allow you to protect yourself from this type of risk.
 
 <!-- CONTRIBUTING -->
 # Contributing
