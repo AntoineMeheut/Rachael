@@ -57,6 +57,11 @@
 # About this project
 ## Videos
 Alice created a workflow that uses AI to read all her new emails, assess the CV against a job offer, choose the candidate and automatically send them an email, if the AI ​​agent considers that their CV matches the position to be filled.
+<p align="center">
+  <a>
+    <img src="images/HR-agent-sample.png" alt="HR-agent-sample" width="450" height="250">
+  </a>
+</p>
 
 Video of the processing of Bob's CV, whose profile is a perfect match for the job advertisement.
 
