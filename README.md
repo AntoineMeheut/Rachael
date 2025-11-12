@@ -39,6 +39,7 @@
     * [Install ollama](#install-ollama)
     * [Create the AI agent](#create-the-AI-agent)
     * [Demonstration setup](#demonstration-setup)
+    * [Demonstration execution](#demonstration-execution)
 * [Contributing](#contributing)
 * [License](#license)
 * [Credit](#credit)
@@ -110,6 +111,14 @@ n8n workflows can be saved in json format; you can find the json file for this d
 ## Demonstration setup
 
 You will need to adapt certain steps of the workflow you just imported into the n8n tool to make the demonstration work.
+
+### 
+## Demonstration execution
+
+
+
+## A closer look at Eve's CV
+
 
 <!-- CONTRIBUTING -->
 # Contributing
