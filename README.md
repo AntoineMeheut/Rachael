@@ -35,13 +35,10 @@
     * [My goals](#my-goals)
 	* [Features](#features)
 * [Installation](#installation)
-* [API keys](#api-keys)
-* [Ollama Installation](#ollama-installation)
-* [Usage](#usage)
-* [Firewall Testing Mode](#firewall-testing-mode)
-* [Test Rules](#test-rules)
-* [JSON Output](#json-output)
-* [Build documentation](#build-documentation)
+    * [Install n8n](#install-n8n)
+    * [Install ollama](#install-ollama)
+    * [Create the AI agent](#create-the-AI-agent)
+    * [Demonstration setup](#demonstration-setup)
 * [Contributing](#contributing)
 * [License](#license)
 * [Credit](#credit)
@@ -88,9 +85,9 @@ Meeting these prerequisites wasn't always easy; I'll explain this in more detail
 - Create an AI agent that reads resumes, evaluates them, and sends emails to candidates,
 - Inject instructions for the AI agent into a PDF file.
 
-## Installation
+# Installation
 
-1. Install n8n
+## Install n8n
 
 To use local workflows, I chose to install n8n.
 
@@ -100,22 +97,22 @@ My choice here is to have Ollama separately, as I use it with other projects not
 
 For n8n, I chose to install and launch it with Docker Desktop. This has the following impact: for n8n in Docker to call Ollama, I have to give to n8n the following address to access my local Ollama: http://host.docker.internal:11434/
 
-2. Install ollama
+## Install ollama
 
 To use local models, I chose to install Ollama. 
 
 Navigate to the [Ollama's Download page](https://ollama.ai/download) and follow the installation instructions.
 
-3. Create the AI agent
+## Create the AI agent
 
 n8n workflows can be saved in json format; you can find the json file for this demonstration [agent demo](/resources/n8n_json_demo/demo.json), import it into your n8n instance.
 
-4. Demonstration setup
+## Demonstration setup
 
 You will need to adapt certain steps of the workflow you just imported into the n8n tool to make the demonstration work.
 
 <!-- CONTRIBUTING -->
-## Contributing
+# Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create.
 Any contributions you make are **greatly appreciated**.
@@ -127,18 +124,18 @@ Any contributions you make are **greatly appreciated**.
 5. Open a Pull Request
 
 <!-- LICENSE -->
-## License
+# License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- CREDIT -->
-## Credit
+# Credit
 In homage to one of my favorite science fiction films: Blade Runner, directed by Ridley Scott and released in 1982.
 
 This project is inspired by the following project: https://github.com/greshake/llm-security
 
 <!-- CONTACT -->
-## Contact
+# Contact
 
 If you want to contact me [just clic](mailto:github.contacts@protonmail.com)
 
