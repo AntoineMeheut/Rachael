@@ -9,7 +9,6 @@
   
   <p align="center">
     Demonstration of injecting data into a PDF to make an AI agent perform actions.
-
     <br />
     <a href="https://antoinemeheut.github.io/Rachael/">Documentation</a>
     ·
