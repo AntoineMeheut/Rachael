@@ -56,18 +56,13 @@
 <!-- ABOUT THE PROJECT -->
 # About this project
 ## Videos
-https://github.com/user-attachments/assets/4d2b1686-8c2c-4db9-b20f-e66310d3571d
-
-
-
-
 <br />
 <p align="center">
   <a href="https://github.com/AntoineMeheut/Rachael">
-    <img src="images/sample1.png" alt="sample1" width="850" height="250">
+    <img src="videos/AI-Agent-Bob-CV.mp4" alt="sample1" width="850" height="250">
   </a>
   <a href="https://github.com/AntoineMeheut/Rachael">
-    <img src="images/sample2.png" alt="sample2" width="850" height="250">
+    <img src="videos/AI-Agent-Eve-CV.mp4" alt="sample2" width="850" height="250">
   </a>
 </p>
 
