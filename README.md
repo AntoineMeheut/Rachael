@@ -56,19 +56,7 @@
 <!-- ABOUT THE PROJECT -->
 # About this project
 ## Videos
-<br />
-<p align="center">
-  <a>
-    <video controls width="250">
-        <source src="/videos/AI-Agent-Bob-CV.mp4" type="video/mp4" />
-    </video>
-  </a>
-  <a>
-    <video controls width="250">
-        <source src="/videos/AI-Agent-Eve-CV.mp4" type="video/mp4" />
-    </video>
-  </a>
-</p>
+[![AI Agent with Bob CV](https://github.com/AntoineMeheut/Rachael/blob/main/images/HR-agent-sample.png](https://github.com/AntoineMeheut/Rachael/blob/main/videos/AI-Agent-Bob-CV.mp4)
 
 ## My goals
  Testing data injection into a PDF to trigger actions in an AI agent.
