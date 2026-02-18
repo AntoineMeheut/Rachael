@@ -66,11 +66,11 @@ Alice created a workflow that uses AI to read all her new emails, assess the CV 
 
 Video of the processing of Bob's CV, whose profile is a perfect match for the job advertisement.
 
-https://github.com/user-attachments/assets/437aa070-5026-481a-9e2b-bb6df23a0b86
+https://github.com/user-attachments/assets/6f7dc424-45e0-423f-86eb-5cbb91b30c8a
 
 Video of the processing of Eve's CV which has integrated instructions into her CV, to manipulate Alice's AI agent.
 
-https://github.com/user-attachments/assets/629a93b0-e607-429d-a5ab-958ce7ac497c
+https://github.com/user-attachments/assets/182814e1-3ac1-4ec6-b078-8c7bccba8f2f
 
 Eve should not receive a success notification. If she does, it's because she included the following instructions in her resume for the AI ​​agent who processed it.
 
