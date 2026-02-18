@@ -94,7 +94,7 @@
     },
     {
       "parameters": {
-        "fromEmail": "=alice.hackme@watay.fr",
+        "fromEmail": "=alice.hackme@domain.fr",
         "toEmail": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('To_Email', ``, 'string') }}",
         "subject": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Subject', ``, 'string') }}",
         "html": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('HTML', ``, 'string') }}",
@@ -200,7 +200,7 @@
     },
     {
       "parameters": {
-        "fromEmail": "alice.hackme@watay.fr",
+        "fromEmail": "alice.hackme@domain.fr",
         "toEmail": "={{ $json.output.email }}",
         "subject": "Offer OFER-001: Expert Python Developer ",
         "html": "Thank you very much for your application, which we were unable to accept. Sincerely.",

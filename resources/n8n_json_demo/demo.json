@@ -94,7 +94,7 @@
     },
     {
       "parameters": {
-        "fromEmail": "=alice.hackme@watay.fr",
+        "fromEmail": "=alice.hackme@domain.fr",
         "toEmail": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('To_Email', ``, 'string') }}",
         "subject": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Subject', ``, 'string') }}",
         "html": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('HTML', ``, 'string') }}",
