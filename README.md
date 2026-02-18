@@ -4,8 +4,6 @@
   <a href="https://github.com/AntoineMeheut/Rachael">
     <img src="images/Rachael.png" alt="Rachael" width="650" height="250">
   </a>
-
-  <h3 align="center">THIS PROJECT IS CURRENTLY UNDER CONSTRUCTION!</h3>
   
   <p align="center">
     Demonstration of injecting data into a PDF to make an AI agent perform actions.
